@@ -1,0 +1,18 @@
+@charset "utf-8";
+@import "compass/css3/text-shadow";
+
+body {
+  background-color: #333;
+}
+
+.welcome {
+  height: 4em;
+  width: 30em;
+  margin: 4em auto;
+  h1 {
+    text-align: center;
+    color: rgba(0, 0, 0, 0.2);
+    font-size: 7em;
+    @include text-shadow(rgba(255, 255, 255, 0.4) 1px 1px 0px);
+  }
+}
