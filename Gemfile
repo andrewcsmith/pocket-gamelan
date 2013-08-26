@@ -10,8 +10,10 @@ gem "middleman-livereload", "~> 3.1.0"
 # For a grid system
 gem "susy"
 
+gem "middleman-sprockets"
+
 # For javascript testing
-gem "jasmine"
+gem "middleman-jasmine"
 
 # For faster file watcher updates on Windows:
 # gem "wdm", "~> 0.1.0", :platforms => [:mswin, :mingw]

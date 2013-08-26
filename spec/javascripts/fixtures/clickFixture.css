@@ -1,0 +1,13 @@
+.archipelago {
+  position: fixed;
+  top: 0; left: 0;
+}
+
+.nav {
+  height: 3em;
+}
+
+.island#gamelan {
+  position: fixed;
+  top: 0; left: 32em;
+}
