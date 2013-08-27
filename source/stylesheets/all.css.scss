@@ -32,6 +32,12 @@ body {
   float: right;
 }
 
+a {
+  color: #513312;
+  text-decoration: none;
+  &:hover { color: #401F00; text-decoration: underline;}
+}
+
 .nav {
   position: fixed;
   width: 100%;
