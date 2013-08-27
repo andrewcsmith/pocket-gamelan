@@ -8,9 +8,7 @@ $(document).bind('mobileinit', function() {
 
 //= require "./vendor/jquery.mobile-1.3.2.min.js"
 
-var getTopPadding = function() {
-  return parseInt($('.nav').css('height'), 10);
-}
+//= require './elements/function.js.coffee'
 
 var moveToAnchor = function(e) {
   if ($(this).is("div")) {
