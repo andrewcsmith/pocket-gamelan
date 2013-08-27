@@ -18,6 +18,10 @@ body {
   overflow: hidden;
 }
 
+.pull-right {
+  float: right;
+}
+
 .nav {
   position: fixed;
   width: 100%;
@@ -30,6 +34,11 @@ body {
   .nav-link {
     display: inline;
   }
+  > .pull-right {
+    position: absolute;
+    top: 1em;
+    right: 2em;
+  }
 }
 
 .archipelago {
@@ -40,19 +49,22 @@ body {
 .island {
   @include container($total-columns, $mobile);
   width: 35em;
+  img { width: 35em; }
   @include at-breakpoint($tablet) {
     width: 24em;
+    img { width: 24em; }
   }
   @include at-breakpoint($mobile) {
     width: 16em;
+    img { width: 16em; }
   }
   
   position: absolute;
-  max-height: 40em;
+  max-height: 35em;
   overflow-x: hidden;
   overflow-y: auto;
   margin: 1.5em auto;
-  padding: 0.5em;
+  padding: 1em;
   background-color: #fff;
   > h1 {
     color: rgba(0, 0, 0, 0.2);
