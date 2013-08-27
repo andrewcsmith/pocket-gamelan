@@ -11,6 +11,7 @@ gem "middleman-livereload", "~> 3.1.0"
 gem "susy"
 
 gem "middleman-sprockets"
+gem "coffee-script"
 
 # For javascript testing
 gem "middleman-jasmine"

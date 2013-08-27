@@ -1,21 +1,31 @@
+/*
+ *= require "./vendor/jquery.mobile.custom.structure.css"
+ *= require "./vendor/jquery.mobile.custom.theme.css"
+*/
+
 @charset "utf-8";
 @import 'susy';
 @import "layouts/grid";
-@import "compass/css3/text-shadow";
+@import "compass/css3";
+@import "compass/typography";
+
+$base-line-height: 24px;
+
+@include establish-baseline(16px);
 
 $total-columns: 8;
 $column-width: 4em;
 $gutter-width: 1em;
 
-$tablet: 6, 35em;
-$mobile: 4, 20em;
-
+$tablet: 6, 39em;
+$mobile: 4, 29em;
 
 body {
-  background-image: url('/images/background.png');
   width: 100%;
   height: 100%;
   overflow: hidden;
+  font-family: 'Helvetica Neue', Helvetica, sans-serif;
+  font-weight: 300;
 }
 
 .pull-right {
@@ -27,7 +37,8 @@ body {
   width: 100%;
   height: 3em;
   z-index: 10;
-  background-color: #fff;
+  background-color: #fff; // fallback for old browsers
+  background-color: rgba(255, 255, 255, 0.75);
   .nav-links {
     text-align: center;
   }
@@ -44,6 +55,10 @@ body {
 .archipelago {
   position: fixed;
   top: 3em; left: 0;
+  height: 150em;
+  width: 200em;
+  background: url("/images/bg_nick.jpg") no-repeat;
+  background-size: auto 150em;
 }
 
 .island {
@@ -56,6 +71,7 @@ body {
   }
   @include at-breakpoint($mobile) {
     width: 16em;
+    max-height: 16em;
     img { width: 16em; }
   }
   
@@ -65,28 +81,33 @@ body {
   overflow-y: auto;
   margin: 1.5em auto;
   padding: 1em;
-  background-color: #fff;
+  background-color: #fff; // fallback for old browsers
+  background-color: rgba(255, 255, 255, 0.75);
   > h1 {
-    color: rgba(0, 0, 0, 0.2);
+    font-family: 'kulturista-web';
+    .wf-loading & { display: none; }
+    color: #000;
     font-size: 3em;
     text-align: center;
     margin: 0.25em 0;
     @include text-shadow(rgba(255, 255, 255, 0.4) 1px 1px 0px);
   }
   > h2 {
-    color: rgba(0, 0, 0, 0.2);
+    font-family: 'kulturista-web';
+    .wf-loading & { display: none; }
+    color: #000;
     font-size: 2em;
     text-align: center;
   }
   > p {
     
   }
-  &#main { top: 0; left: 0; }
-  &#talujon { top: 0; left: 40em; }
-  &#gamelan { top: 0; left: 80em; }
-  &#brooke { top: -40em; left: -32em; }
-  &#ziporyn { top: 40em; left: 40em; }
-  &#bali { top: -30em; left: -80em; }
+  &#main { top: 40em; left: 65em; }
+  &#talujon { top: 55em; left: 25em; }
+  &#gamelan { top: 35em; left: 115em; }
+  &#brooke { top: 5em; left: 5em; }
+  &#ziporyn { top: 80em; left: 115em; }
+  &#bali { top: 85em; left: 45em; }
 }
 
 
