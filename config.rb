@@ -36,12 +36,12 @@
 # activate :automatic_image_sizes
 
 # Reload the browser automatically whenever files change
-activate :livereload
+# activate :livereload
 
 activate :jasmine
 activate :sprockets
 
-set :js_assets_paths, [File.join(File.expand_path(File.dirname(__FILE__)), 'javascripts')]
+sprockets.append_path File.join(File.expand_path(File.dirname(__FILE__)), 'javascripts')
 
 # Methods defined in the helpers block are available in templates
 # helpers do

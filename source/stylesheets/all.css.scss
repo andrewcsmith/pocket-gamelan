@@ -3,9 +3,13 @@
 @import "layouts/grid";
 @import "compass/css3/text-shadow";
 
-$total-columns: 6;
+$total-columns: 8;
 $column-width: 4em;
 $gutter-width: 1em;
+
+$tablet: 6, 35em;
+$mobile: 4, 20em;
+
 
 body {
   background-image: url('/images/background.png');
@@ -34,19 +38,25 @@ body {
 }
 
 .island {
+  @include container($total-columns, $mobile);
+  width: 35em;
+  @include at-breakpoint($tablet) {
+    width: 24em;
+  }
+  @include at-breakpoint($mobile) {
+    width: 16em;
+  }
+  
   position: absolute;
-  width: 30em;
-  height: 30em;
+  max-height: 40em;
   overflow-x: hidden;
   overflow-y: auto;
+  margin: 1.5em auto;
   padding: 0.5em;
-  margin: 1.5em;
-//  border: 1px solid black;
   background-color: #fff;
-  @include container;
   > h1 {
     color: rgba(0, 0, 0, 0.2);
-    font-size: 4em;
+    font-size: 3em;
     text-align: center;
     margin: 0.25em 0;
     @include text-shadow(rgba(255, 255, 255, 0.4) 1px 1px 0px);

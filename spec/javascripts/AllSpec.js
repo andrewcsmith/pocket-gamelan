@@ -17,25 +17,6 @@ describe("Pocket Gamelan", function() {
     expect($('.island#gamelan')).toHaveCss({position: 'fixed', left: '512px'})
   });
   
-  describe("getIslandPosition(element)", function() {
-    var el, gamelanSpy;
-    
-    beforeEach(function() {
-      el = $('.island#gamelan'); // have to keep calling same jQuery object
-      gamelanSpy = spyOn(el, 'css').andCallThrough(); // spy on it
-    });
-    
-    it("gets island position", function() {
-      expect(getIslandPosition(el)).toEqual([512, 0]);
-    });
-  
-    it("calls css with top and left", function() {
-      getIslandPosition(el);
-      expect(el.css).toHaveBeenCalledWith('top');
-      expect(el.css).toHaveBeenCalledWith('left');
-    });
-  });
-  
   describe("getTopPadding()", function() {
     it("has top padding", function() {
       expect(getTopPadding()).toEqual(48)
@@ -64,7 +45,7 @@ describe("Pocket Gamelan", function() {
   
     it("moves the archipelago", function() {
       $('.nav-link a[href="#gamelan"]').click();
-      expect($('.archipelago')).toHaveCss({left: "-512px"});
+      expect($('.archipelago')).toHaveCss({left: "-1.5px"});
     })
   
     afterEach(function() {
@@ -72,4 +53,10 @@ describe("Pocket Gamelan", function() {
       document.location.hash = '';
     })
   });
+  
+  describe("moveArchipelago()", function() {});
+  
+  describe("moveTo()", function() {});
+  
+  // describe("", function(){});
 });
