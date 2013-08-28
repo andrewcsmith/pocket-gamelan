@@ -4,6 +4,9 @@
 
 (function() {
   var config = {
+    active: function() {
+      goToHashedIsland();
+    },
     kitId: 'ofu5wmi',
     scriptTimeout: 3000
   };
@@ -12,6 +15,14 @@
 
 var getTopPadding = function() {
   return parseInt($('.nav').css('height'), 10);
+}
+
+var goToHashedIsland = function() {
+  if(document.location.hash != "") {
+    moveTo($(document.location.hash), 1);
+  } else {
+    moveTo($('#main'), 1);
+  }
 }
 
 var moveToAnchor = function(e) {
@@ -43,11 +54,11 @@ var constrainPosition = function(pos) {
 
 var moveTo = function(el, moveTime) {
   el.scrollTop(0);
-  var elPos = el.position();
   var w = el.width() + parseInt(el.css('padding-left'), 10) + parseInt(el.css('padding-right'), 10);
+  var h = el.height() + parseInt(el.css('padding-top'), 10) + parseInt(el.css('padding-bottom'), 10);
   var pos = {
-    left: (elPos.left - (($(document).width() - w) / 2.0)) * -1,
-    top: elPos.top * -1 + getTopPadding()
+    left: (el.position().left - (($(document).width() - w) / 2.0)) * -1,
+    top: (el.position().top - (($(document).height() - h) / 2.0)) * -1 // + getTopPadding()
   }
   pos = constrainPosition(pos);
   $('.archipelago').animate({
@@ -91,21 +102,36 @@ var mouseUpArchipelago = function(m) {
 
 // on-load function
 $(function() {
-  // Add the click handlers to the nav functions
-  $(".nav-link a").click(moveToAnchor);
+  // Set jquery move vars so that we don't accidentally move
+  $.vmouse.moveDistanceThreshold = 0;
+  $.vmouse.resetTimerDuration = 200;
+  
+  // Add the click handlers to the links
+  $("a[rel='local']").click(moveToAnchor);
   // Add the click handlers to each div
   $(".island").bind('vclick', moveToAnchor);
   // Navigate to the hashed island
-  if(document.location.hash != "") {
-    moveTo($(document.location.hash), 1);
-  } else {
-    moveTo($('#main'), 1);
-  }
+  goToHashedIsland();
   $('.archipelago').bind({
     vmousedown: mouseDownArchipelago,
     vmouseup: mouseUpArchipelago,
     mouseenter: mouseUpArchipelago
   });
   $('.island').scroll(mouseUpArchipelago);
+  $('.island').scroll(function() {
+    $(this).children('.bg').hide();
+    // $(this).css('background-image', 'none');
+    // $(this).css('background-color', 'rgba(255, 255, 255, 0.9375)');
+    $(this).unbind('scroll');
+    $(this).scroll(mouseUpArchipelago);
+  });
   $(window).bind('vmouseup', mouseUpArchipelago);
+  
+  $('.nav-link').bind({
+    mouseover: function(){$(this).children('.nav-links').css('display', 'block');},
+    mouseout: function(){$(this).children('.nav-links').css('display', 'none');}
+  });
+  $('.nav-link').children('.nav-links').bind({
+    mouseout: function(){$(this).css('display', 'none');}
+  });
 });

@@ -32,8 +32,10 @@ body {
   float: right;
 }
 
+$link-color: #513312;
+
 a {
-  color: #513312;
+  color: $link-color;
   text-decoration: none;
   &:hover { color: #401F00; text-decoration: underline;}
 }
@@ -41,31 +43,85 @@ a {
 .nav {
   position: fixed;
   width: 100%;
+  @include at-breakpoint($mobile) {
+    @include adjust-font-size-to(12px);
+  }
   height: 3em;
   z-index: 10;
   background-color: #fff; // fallback for old browsers
   background-color: rgba(255, 255, 255, 0.75);
   .nav-links {
     text-align: center;
+    padding-left: 0;
   }
   .nav-link {
     display: inline;
+    position: relative;
+    padding: 1em 0.25em;
+    > .nav-links {
+      display: none;
+      position: absolute;
+      left: 0;
+      top: 2.8em;
+      padding: 0;
+      margin-left: -0.5em;
+      background-color: rgba(0, 0, 0, 0.5);
+      > .nav-link {
+        display: block;
+        text-align: left;
+        padding: 0.25em 0.75em;
+        //margin-left: -0.5em;
+        a { color: #fff; }
+        &:hover { 
+          background: #fff; 
+          a {color: $link-color; }
+        }
+      }
+    }
   }
   > .pull-right {
     position: absolute;
     top: 1em;
     right: 2em;
   }
+  .island & {
+    position: absolute;
+    top: 0; left: 0;
+    // background-color: rgba(0, 0, 0, 0.5);
+    background: none;
+    padding: 0;
+    .nav-links {
+      text-align: left;
+      padding: 0.75em 0 0.875em;
+      margin: 0;
+      .nav-link {
+        padding: 1em;
+//        background-color: rgba(0, 0, 0, 0.5);
+        a { color: $link-color;}
+        &.active { 
+          background-color: rgba(0, 0, 0, 0.75);
+          a {color: white; }
+        }
+      }
+    }
+  }
 }
 
 .archipelago {
   position: fixed;
   top: 3em; left: 0;
-  height: 150em;
-  width: 200em;
-  background: url("/images/bg_nick.jpg") no-repeat;
-  background-size: auto 150em;
+  height: 74em;
+  width: 162em;
+  @include at-breakpoint($tablet) {
+    width: 118em;
+  }
+  @include at-breakpoint($mobile) {
+    width: 86em;
+  }
+  background: url("/images/table.jpg") no-repeat;
+  background-size: 162em auto;
 }
+
 
 .island {
   @include container($total-columns, $mobile);
@@ -77,44 +133,78 @@ a {
   }
   @include at-breakpoint($mobile) {
     width: 16em;
-    max-height: 16em;
+//    max-height: 16em;
     img { width: 16em; }
   }
   
+  .view {
+    display: none;
+    &.active {
+      display: block;
+      background: none;
+    }
+  }
+  
   position: absolute;
-  max-height: 35em;
+  max-height: 40em;
   overflow-x: hidden;
   overflow-y: auto;
-  margin: 1.5em auto;
+  margin: 0.5em auto;
   padding: 1em;
-  background-color: #fff; // fallback for old browsers
+//  background-color: #fff; // fallback for old browsers
   background-color: rgba(255, 255, 255, 0.75);
-  > h1 {
+//  @include background-image(linear-gradient(rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0.75) 85%, rgba(255, 255, 255, 0)));
+  > .bg {
+    height: 15%;
+    width: 100%;
+    position: absolute;
+    bottom: 0; left: 0;
+//    @include background-image(linear-gradient(rgba(255, 255, 255, 0), rgba(255, 255, 255, 0.75)));
+  }
+  h1 {
     font-family: 'kulturista-web';
     .wf-loading & { display: none; }
     color: #000;
-    font-size: 3em;
+    @include adjust-font-size-to(42px, 2);
     text-align: center;
     margin: 0.25em 0;
     @include text-shadow(rgba(255, 255, 255, 0.4) 1px 1px 0px);
   }
-  > h2 {
+  h2 {
     font-family: 'kulturista-web';
     .wf-loading & { display: none; }
     color: #000;
-    font-size: 2em;
+    @include adjust-font-size-to(36px, 2);
     text-align: center;
   }
   > p {
     
   }
-  &#main { top: 40em; left: 65em; }
-  &#talujon { top: 55em; left: 25em; }
-  &#gamelan { top: 35em; left: 115em; }
-  &#brooke { top: 5em; left: 5em; }
-  &#ziporyn { top: 80em; left: 115em; }
-  &#bali { top: 85em; left: 45em; }
+  &#talujon { top: 24em; left: 2em; }
+  &#main { top: 15em; left: 42em; }
+  &#gamelan { top: 8em; left: 82em; }
+  &#pieces { top: 30em; left: 122em;}
+  @include at-breakpoint($tablet) {
+    &#talujon { top: 24em; left: 2em; }
+    &#main { top: 15em; left: 31em; }
+    &#gamelan { top: 8em; left: 60em; }
+    &#pieces { top: 30em; left: 89em;}
+  }
+  @include at-breakpoint($mobile) {
+    &#talujon { top: 24em; left: 2em; }
+    &#main { top: 15em; left: 23em; }
+    &#gamelan { top: 8em; left: 44em; }
+    &#pieces { top: 30em; left: 65em;}
+  }
 }
 
 
 
+#main-jumbotron {
+  p {
+    font-family: 'kulturista-web';
+    .wf-loading & { display: none; }
+    font-weight: 500;
+    @include adjust-font-size-to(20px, 1.25);
+  }
+}

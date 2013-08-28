@@ -5,45 +5,64 @@ title: Pocket Gamelan
 .nav
   %ul.nav-links
     %li.nav-link 
-      %a(href="#main") Pocket Gamelan
-      |
+      %a(href="#main" rel="local") Pocket Gamelan
+    |
     %li.nav-link 
-      %a(href="#talujon") Talujon
-      |
+      %a(href="#talujon" rel="local") Talujon
+    |
     %li.nav-link 
-      %a(href="#gamelan") Gamelan
-      |
-    %li.nav-link 
-      %a(href="#brooke") Brooke &amp; Mugiyono
-      |
-    %li.nav-link 
-      %a(href="#ziporyn") Evan Ziporyn
-      |
-    %li.nav-link 
-      %a(href="#bali") Indonesian Artists
-  .pull-right
-    [audio player goes here]
+      %a(href="#gamelan" rel="local") Gamelan
+      %ul.nav-links
+        %li.nav-link
+          %a(href="#gamelan/description") Description
+        %li.nav-link
+          %a(href="#gamelan/history") History
+        %li.nav-link
+          %a(href="#gamelan/samples") Audio
+    |
+    %li.nav-link
+      %a(href="#pieces" rel="local") The Pieces
+      %ul.nav-links
+        %li.nav-link 
+          %a(href="#brooke" rel="local") Brooke &amp; Mugiyono
+        %li.nav-link 
+          %a(href="#ziporyn" rel="local") Evan Ziporyn
+        %li.nav-link 
+          %a(href="#bali" rel="local") Indonesian Artists
 .archipelago
   .island#main
-    %h1 Pocket Gamelan
-    :markdown
-      In 2014, the percussion sextet Talujon will present “Pocket Gamelan," an
-      evening-length show that take its cue from Indonesian composers who have
-      transformed the gamelan through instrument building, installation art,
-      and multi-media approaches. Talujon re-imagines the gamelan as a
-      makeshift and dynamic instrumentarium, comprised of parts gathered from
-      the surrounding environment.
-
-      This multimedia event will feature a new work by groundbreaking composer
-      and founding Bang on a Can All-star Evan Ziporyn, and a premiere by
-      genre-busting composer Nick Brooke, choreographed and danced by the
-      renowned Javanese dancer Mugiyono Kasido. The show will also feature work
-      by Indonesian composer Dawa Alit with a film by Indonesian filmamker x,
-      and an installation piece by the Balinese maverick I Made Subandi, in
-      which toy gamelan parts are assembled to create a surround-sound
-      experience.
+    .bg
+    .view.active#main-jumbotron
+      %h1 Gamelan
+      :markdown 
+        A catchall term for the orchestras of Java and Bali. It comes from the
+        Javanese word *gamel*, meaning *to strike, or hit*. &ldquo;Gamlean&rdquo;
+        refers to both the collection of instruments and to the ensemble of
+        performers.
+        
+      %h1 &ldquo;Pocket Gamelan&rdquo;
+      :markdown
+        An evening-length show, presented by Talujon percussion sextet,
+        re-imagining the gamelan as a makeshift and dynamic instrumentarium,
+        comprised of parts gathered from the surrounding environment.
+        
+        **Click-and-drag** to explore the site, or use the navigation menu at
+        the top.
+        
+    .view#main-description
+      %h1 Pocket Gamelan
+      :markdown
+        This multimedia event will feature a new work by groundbreaking composer
+        and founding Bang on a Can All-star <a href="#ziporyn" rel="local">Evan
+        Ziporyn</a>, and a premiere by genre-busting composer <a href="#brooke"
+        rel="local">Nick Brooke</a>, choreographed and danced by the renowned
+        Javanese dancer Mugiyono Kasido. The show will also feature work by
+        Indonesian composer Dawa Alit with a film by Indonesian filmamker x, and
+        an installation piece by the Balinese maverick I Made Subandi, in which
+        toy gamelan parts are assembled to create a surround-sound experience.
 
   .island#talujon
+    .bg
     %h2 Talujon Percussion
     :markdown
       Described by the New York Times as an ensemble possessing an "edgy,
@@ -54,7 +73,13 @@ title: Pocket Gamelan
       dozens of new works for percussion quartet.
 
   .island#gamelan
-    %h2 Gamelan
+    .nav
+      %ul.nav-links
+        %li.nav-link.active
+          %a(href="#gamelan/history") History
+        %li.nav-link
+          %a(href="#gamelan/samples") Listen
+    %h2 History of Gamelan
     :markdown
       &ldquo;Gamelan&rdquo; is a catchall term for the orchestras of Java and
       Bali, most of which share gongs and slab-key metallophones, along with
@@ -73,34 +98,57 @@ title: Pocket Gamelan
       ingeniously transportable manner, cobbled together from instruments
       representing an archipelago of influences.
 
+  .island#pieces
+    .bg
+    .nav
+      %ul.nav-links
+        %li.nav-link.active
+          %a(href="#pieces/main") The Program
+        %li.nav-link
+          %a(href="#pieces/brooke") Brooke / Mugiyono
+        %li.nav-link
+          %a(href="#pieces/ziporyn") Ziporyn
+        %li.nav-link
+          %a(href="#pieces/i1") Indonesian
+    .view.active#home
+      %h2 The Pieces
+      :markdown
+        This multimedia event will feature a new work by groundbreaking
+        composer and founding Bang on a Can All-star Evan Ziporyn, and a
+        premiere by genre-busting composer Nick Brooke, choreographed and
+        danced by the renowned Javanese dancer Mugiyono Kasido. The show will
+        also feature work by Indonesian composer Dawa Alit with a film by
+        Indonesian filmamker x, and an installation piece by the Balinese
+        maverick I Made Subandi, in which toy gamelan parts are assembled to
+        create a surround-sound experience.
+        
+    .view#brooke
+      %h2 Nick Brooke &amp; Mugiyono: "The Traps"
+      %img(src="/images/mugi.jpg")
+      :markdown
+        For his new work The Traps, composer Nick Brooke has constructed six
+        attaché cases filled with intricate miniature glass and metalwork,
+        inspired by the sound effects boxes once employed for live accompaniment
+        to silent films. Brooke’s work, commissioned through the Commissioning
+        Music/USA program, will be developed in collaboration with the
+        internationally celebrated, palace-trained dancer and choreographer
+        Mugiyono Kasido, last seen in the U.S. in a solo performance at the 2005
+        Lincoln Center Festival.
+      
+    .view#ziporyn
+      %h2 Evan Ziporyn
+      :markdown    
+        Following more than 30 years of immersion in and creative engagement
+        with Balinese gamelan, Evan Ziporyn’s new work Home Grown mixes the
+        dovetailing rhythms of gamelan with Ziporyn’s own quirky language,
+        re-orchestrated spontaneously on instruments gathered by the players at
+        the site of each performance. The music's form and organizational
+        principles will be derived from the structure of traditional gamelan
+        music, and recontextualized by the newly found sounds. It is a piece
+        that has a distinctive identity but is "localized" anew with each
+        performance.
 
-
-  .island#brooke
-    %h2 Nick Brooke &amp; Mugiyono: "The Traps"
-    %img(src="/images/mugi.jpg")
-    :markdown
-      For his new work The Traps, composer Nick Brooke has constructed six
-      attaché cases filled with intricate miniature glass and metalwork,
-      inspired by the sound effects boxes once employed for live accompaniment
-      to silent films. Brooke’s work, commissioned through the Commissioning
-      Music/USA program, will be developed in collaboration with the
-      internationally celebrated, palace-trained dancer and choreographer
-      Mugiyono Kasido, last seen in the U.S. in a solo performance at the 2005
-      Lincoln Center Festival.
-
-  .island#ziporyn
-    %h2 Evan Ziporyn
-    :markdown    
-      Following more than 30 years of immersion in and creative engagement with
-      Balinese gamelan, Evan Ziporyn’s new work Home Grown mixes the
-      dovetailing rhythms of gamelan with Ziporyn’s own quirky language,
-      re-orchestrated spontaneously on instruments gathered by the players at
-      the site of each performance. The music's form and organizational
-      principles will be derived from the structure of traditional gamelan
-      music, and recontextualized by the newly found sounds. It is a piece that
-      has a distinctive identity but is "localized" anew with each performance.
-
-  .island#bali
-    %h2 Indonesian Artists
-    :markdown
-      tbd...
+    .view#javanese
+      %h2 Indonesian Artists
+      :markdown
+        tbd...
