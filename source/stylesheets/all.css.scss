@@ -13,6 +13,11 @@ $base-line-height: 24px;
 
 @include establish-baseline(16px);
 
+@mixin justified {
+  text-align: justify;
+  @include hyphenation;
+}
+
 $total-columns: 8;
 $column-width: 4em;
 $gutter-width: 1em;
@@ -53,6 +58,9 @@ a {
   .nav-links {
     text-align: center;
     padding-left: 0;
+    @include at-breakpoint($mobile) {
+      margin: 0.5em;
+    }
   }
   .nav-link {
     display: inline;
@@ -178,7 +186,7 @@ a {
     text-align: center;
   }
   > p {
-    
+    @include justified;
   }
   &#talujon { top: 24em; left: 2em; }
   &#main { top: 15em; left: 42em; }
@@ -204,7 +212,11 @@ a {
   p {
     font-family: 'kulturista-web';
     .wf-loading & { display: none; }
-    font-weight: 500;
-    @include adjust-font-size-to(20px, 1.25);
+    font-weight: 300;
+    @include justified;
+    @include adjust-font-size-to(18px, 1.25);
+    @include at-breakpoint ($mobile) {
+      @include adjust-font-size-to(16px, 1.1);
+    }
   }
 }

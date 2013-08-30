@@ -34,7 +34,7 @@ var moveToAnchor = function(e) {
     var hash = this.href.match(/#.*$/);
     // console.log(hash);
     // console.log($(".island" + hash));
-    var el = $(hash + ""); // jQuery object of the element
+    var el = $((hash + "").replace('/', '# ')); // jQuery object of the element
   }
   // el should be a jQuery object of the element to move to
   moveTo(el);
@@ -52,14 +52,22 @@ var constrainPosition = function(pos) {
   return pos;
 }
 
-var moveTo = function(el, moveTime) {
-  el.scrollTop(0);
+var constrainMoveTo = function(el) {
   var w = el.width() + parseInt(el.css('padding-left'), 10) + parseInt(el.css('padding-right'), 10);
   var h = el.height() + parseInt(el.css('padding-top'), 10) + parseInt(el.css('padding-bottom'), 10);
   var pos = {
     left: (el.position().left - (($(document).width() - w) / 2.0)) * -1,
-    top: (el.position().top - (($(document).height() - h) / 2.0)) * -1 // + getTopPadding()
+    top: (el.position().top - (($(document).height() - h) / 2.0)) * -1
   }
+  if (pos.top * -1.0 > el.position().top - 48) {
+    pos.top = (el.position().top - 48) * -1.0;
+  }
+  return pos;
+}
+
+var moveTo = function(el, moveTime) {
+  el.scrollTop(0);
+  var pos = constrainMoveTo(el);
   pos = constrainPosition(pos);
   $('.archipelago').animate({
     left: pos.left,
@@ -120,18 +128,18 @@ $(function() {
   $('.island').scroll(mouseUpArchipelago);
   $('.island').scroll(function() {
     $(this).children('.bg').hide();
-    // $(this).css('background-image', 'none');
-    // $(this).css('background-color', 'rgba(255, 255, 255, 0.9375)');
     $(this).unbind('scroll');
     $(this).scroll(mouseUpArchipelago);
   });
   $(window).bind('vmouseup', mouseUpArchipelago);
   
   $('.nav-link').bind({
-    mouseover: function(){$(this).children('.nav-links').css('display', 'block');},
-    mouseout: function(){$(this).children('.nav-links').css('display', 'none');}
+    mouseover: function(){$(this).children('.nav-links').show();},
+    mouseout: function(){$(this).children('.nav-links').hide();},
+    click: function(){$(this).children('.nav-links').hide();}
   });
   $('.nav-link').children('.nav-links').bind({
-    mouseout: function(){$(this).css('display', 'none');}
+    mouseout: function(){$(this).hide();},
+    vclick: function(){$(this).hide();}
   });
 });
