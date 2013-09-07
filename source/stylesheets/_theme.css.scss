@@ -1,0 +1,27 @@
+.nav {
+  @include trans-white-background;
+  @include at-breakpoint($mobile) { @include adjust-font-size-to(12px); }
+  @include fancy-font;
+  
+  > .nav-links {
+    text-align: center;
+    > .nav-link {
+      .island & {
+        a { color: $link-color;}
+        &.active { 
+          background-color: rgba(0, 0, 0, 0.75);
+          a { color: white; }
+        }
+      }
+      > .nav-links {
+        > .nav-link {
+          a { color: #fff; }
+          &:hover { 
+            @include trans-white-background;
+            a { color: $link-color; }
+          }
+        }
+      }
+    }
+  }
+}

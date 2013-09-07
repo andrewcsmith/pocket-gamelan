@@ -1,0 +1,122 @@
+// Main archipelago layout
+
+.archipelago {
+  position: fixed;
+  top: 3em; left: 0;
+  height: 74em;
+  width: 162em;
+  @include at-breakpoint($tablet) {
+    width: 118em;
+  }
+  @include at-breakpoint($mobile) {
+    width: 86em;
+  }
+  background: url("/images/table.jpg") no-repeat;
+  background-size: 162em auto;
+}
+
+// Nav menu
+
+.nav {
+  position: fixed;
+  width: 100%;
+  z-index: 10;
+  > .nav-links {
+    padding-left: 0;
+    margin: 0;
+    @include at-breakpoint($mobile) { margin: 0.5em; }
+    > .nav-link {
+      display: inline-block;
+      position: relative;
+      padding: 0.25em 0.5em;
+      margin: 0 1em;
+      &.active { font-weight: 600; }
+      > .nav-links {
+        display: none;
+        position: absolute;
+        left: 0;
+        top: 2em;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        > .nav-link {
+          display: block;
+          text-align: left;
+          padding: 0.25em 0.5em;
+          margin: 0;
+        }
+      }
+    }
+  }
+  
+  .island & {
+    position: absolute;
+    top: 0; left: 0;
+    background: none;
+    padding: 0;
+    > .nav-links {
+      text-align: center;
+      padding: 0.25em 0;
+      margin: 0;
+      > .nav-link {
+        padding: 0.25em 1em;
+        margin: 0 0.25em;
+        @include trans-white-background;
+      }
+    }
+  }
+}
+
+// Main island layout
+
+.island {
+  @include container($total-columns, $mobile);
+  width: 35em;
+  img, iframe { width: 31em; }
+  @include at-breakpoint($tablet) {
+    width: 24em;
+    img, iframe { width: 20em; }
+  }
+  @include at-breakpoint($mobile) {
+    width: 16em;
+    img, iframe { width: 12em; }
+  }
+  
+  .content {
+    @include trans-white-background;
+    padding: 0.25em 1em 0.25em;
+    margin: 2em 1em 1em;
+  }
+  
+  .view {
+    display: none;
+    &.active {
+      display: block;
+    }
+  }
+  
+  position: absolute;
+  max-height: 40em;
+  overflow-x: hidden;
+  overflow-y: auto;
+  margin: 0.5em auto;
+  padding: 1em;
+
+  &#talujon { top: 24em; left: 2em; }
+  &#main { top: 15em; left: 42em; }
+  &#pieces { top: 8em; left: 82em; }
+  &#gamelan { top: 30em; left: 122em;}
+  @include at-breakpoint($tablet) {
+    &#talujon { top: 24em; left: 2em; }
+    &#main { top: 15em; left: 31em; }
+    &#pieces { top: 8em; left: 60em; }
+    &#gamelan { top: 30em; left: 89em;}
+  }
+  @include at-breakpoint($mobile) {
+    &#talujon { top: 24em; left: 2em; }
+    &#main { top: 15em; left: 23em; }
+    &#pieces { top: 8em; left: 44em; }
+    &#gamelan { top: 30em; left: 65em;}
+  }
+}

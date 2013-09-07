@@ -1,0 +1,32 @@
+body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  font-family: 'Helvetica Neue', Helvetica, sans-serif;
+  font-weight: 300;
+}
+
+a {
+  color: $link-color;
+  text-decoration: none;
+  &:hover { color: #401F00; text-decoration: underline;}
+}
+
+// Typography
+
+#{headings()} {
+  @include fancy-font;
+  color: #000000;
+  text-align: center;
+  font-weight: 600;
+}
+
+h1 { @include adjust-font-size-to(42px, 2); }
+h2 { @include adjust-font-size-to(36px, 2); }
+h3 { @include adjust-font-size-to(28px, 2); }
+
+p { 
+  @include fancy-font;
+  @include justified; 
+  @include adjust-font-size-to(18px, 1.25);
+}

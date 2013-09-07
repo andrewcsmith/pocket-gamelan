@@ -19,7 +19,8 @@ var getTopPadding = function() {
 
 var goToHashedIsland = function() {
   if(document.location.hash != "") {
-    moveTo($(document.location.hash), 1);
+    var island = document.location.hash.match(/#\/[^\/]*/)[0].replace(/\//, '');
+    moveTo($(island), 1);
   } else {
     moveTo($('#main'), 1);
   }
@@ -27,20 +28,29 @@ var goToHashedIsland = function() {
 
 var moveToAnchor = function(e) {
   if ($(this).is("div")) {
-    var hash = $(this).attr("id");
+    var hash = ("/" + $(this).attr("id"));
     var el = $(this);
   } else {
-    // Should be called by a link object
-    var hash = this.href.match(/#.*$/);
-    // console.log(hash);
-    // console.log($(".island" + hash));
-    var el = $((hash + "").replace('/', '# ')); // jQuery object of the element
+    // Should be called by a link object\
+    var hash = this.href.match(/#.*$/)[0]
+    var island = hash.replace(/#\//, '#').replace(/\/.*$/, ''); // String of the island
+    var view = hash.match(/\/([^\/]*$)/)[1];
+    // hash.replace(/#/g, '').replace(/\//g, ' #').trim();
+    var el = $(island); // jQuery object of the island element
+    
+    var id = island + "-" + view;
+    if ($(id).size() > 0) {
+      el.find(".view").removeClass("active");
+      el.find(id).addClass("active");
+      el.find(".nav-link").removeClass("active");
+      el.find(id + "-island-menu").addClass("active");
+    }
   }
   // el should be a jQuery object of the element to move to
   moveTo(el);
   // Change the hash of the current url
   document.location.hash = hash;
-  
+  // Do not implement default behavior of the click
   return false;
 }
 

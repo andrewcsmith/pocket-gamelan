@@ -1,0 +1,21 @@
+- Make the sub-menus function on mobile
+- Work on the background image
+- Add the audio player with a playlist (footer)
+
+Page Hierarchy:
+
+Main island
+	description/intro/link to executive summary pdf
+Talujon Percussion
+	bio
+  photos
+  video
+The Pieces
+  main/overview
+  Brooke/Mugiyono (with sound/video)
+  Ziporyn (with sound)
+  Indonesian composer tbd
+Gamelan
+  definition
+  history / photos
+  sound samples

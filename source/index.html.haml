@@ -2,157 +2,112 @@
 title: Pocket Gamelan
 ---
 
-.nav
-  %ul.nav-links
-    %li.nav-link 
-      %a(href="#main" rel="local") Pocket Gamelan
-    |
-    %li.nav-link 
-      %a(href="#talujon" rel="local") Talujon
-    |
-    %li.nav-link 
-      %a(href="#gamelan" rel="local") Gamelan
-      %ul.nav-links
-        %li.nav-link
-          %a(href="#gamelan/description") Description
-        %li.nav-link
-          %a(href="#gamelan/history") History
-        %li.nav-link
-          %a(href="#gamelan/samples") Audio
-    |
-    %li.nav-link
-      %a(href="#pieces" rel="local") The Program
-      %ul.nav-links
-        %li.nav-link 
-          %a(href="#brooke" rel="local") Brooke &amp; Mugiyono
-        %li.nav-link 
-          %a(href="#ziporyn" rel="local") Evan Ziporyn
-        %li.nav-link 
-          %a(href="#bali" rel="local") Indonesian Artists
+.nav= build_nav_menu
+
 .archipelago
   .island#main
-    .bg
-    .view.active#main-jumbotron
-      %h1 Pocket Gamelan
-      :markdown 
-        &ldquo;Pocket Gamelan&ldquo; is an evening-length show, presented by
-        Talujon percussion sextet, which re-imagines the gamelan as a makeshift
-        and dynamic instrumentarium. It features a new work by Evan Ziporyn, and
-        the premiere of *The Traps* by Nick Brooke and choreographer Mugiyono
-        Kasido, commissioned by Talujon Percussion. These will be performed
-        alongside works by experimental Indonesian composers **X** and **Y**.
-        
-        A catchall term for the orchestras of Java and Bali, *gamelan* refers
-        to both the collection of instruments and the ensemble of performers.
-        Many towns have their own gamelans, each with a unique tuning and
-        instrumentation, often with materials gathered from the surrounding
-        environment.
-        
-    .view#main-description
-      %h1 &ldquo;Pocket Gamelan&rdquo;
-      %img(src="/images/pocket-gamelan.jpg")
-      :markdown
-        An evening-length show, presented by Talujon percussion sextet,
-        re-imagining the gamelan as a makeshift and dynamic instrumentarium,
-        comprised of parts gathered from the surrounding environment.
+    .content
+      .view.active#main-main
+        %h1 Pocket Gamelan
+        :markdown 
+          &ldquo;Pocket Gamelan&rdquo; is an evening-length show, presented by
+          Talujon percussion sextet, re-imagining the gamelan as a makeshift and
+          dynamic instrumentarium, comprised of parts gathered from the
+          surrounding environment.
       
-        This multimedia event will feature a new work by groundbreaking composer
-        and founding Bang on a Can All-star <a href="#ziporyn" rel="local">Evan
-        Ziporyn</a>, and a premiere by genre-busting composer <a href="#brooke"
-        rel="local">Nick Brooke</a>, choreographed and danced by the renowned
-        Javanese dancer Mugiyono Kasido. The show will also feature work by
-        Indonesian composer Dawa Alit with a film by Indonesian filmamker x, and
-        an installation piece by the Balinese maverick I Made Subandi, in which
-        toy gamelan parts are assembled to create a surround-sound experience.
+          This multimedia event will feature a new work by groundbreaking composer
+          and founding Bang on a Can All-star <a href="#ziporyn" rel="local">Evan
+          Ziporyn</a>, and a premiere by genre-busting composer <a href="#brooke"
+          rel="local">Nick Brooke</a>, choreographed and danced by the renowned
+          Javanese dancer Mugiyono Kasido. The show will also feature work by
+          Indonesian composer Dawa Alit with a film by Indonesian filmamker x, and
+          an installation piece by the Balinese maverick I Made Subandi, in which
+          toy gamelan parts are assembled to create a surround-sound experience.
 
   .island#talujon
-    .bg
-    %h2 Talujon Percussion
-    :markdown
-      Described by the New York Times as an ensemble possessing an "edgy,
-      unflagging energy", Talujon has been mesmerizing audiences since 1990.
-      Talujon is thoroughly committed to the expansion of the contemporary
-      percussion repertoire as well as the education and diversification of its
-      worldwide audience. Over the past 20 years, Talujon has commissioned
-      dozens of new works for percussion quartet.
+    .nav= build_island_menu("Talujon")
+    .content
+      %h2 Talujon Percussion
+      .view.active#talujon-bio
+        :markdown
+          Described by the New York Times as an ensemble possessing an "edgy,
+          unflagging energy", Talujon has been mesmerizing audiences since 1990.
+          Talujon is thoroughly committed to the expansion of the contemporary
+          percussion repertoire as well as the education and diversification of
+          its worldwide audience. Over the past 20 years, Talujon has
+          commissioned dozens of new works for percussion quartet.
+      .view#talujon-photos
+        %p Photos of Talujon Percussion TK
+      .view#talujon-video
+        <iframe width="640" height="480" src="//www.youtube.com/embed/tokbZYRqtVQ" frameborder="0" allowfullscreen></iframe>
+    
+  .island#pieces
+    .nav= build_island_menu("The Program")
+    .content
+      .view.active#pieces-overview
+        %h2 The Program
+        :markdown
+          This multimedia event will feature a new work by groundbreaking
+          composer and founding Bang on a Can All-star **Evan Ziporyn**, and a
+          premiere by genre-busting composer **Nick Brooke**, choreographed and
+          danced by the renowned Javanese dancer **Mugiyono Kasido**. The show
+          will also feature work by Indonesian composer Dawa Alit with a film by
+          Indonesian filmamker x, and an installation piece by the Balinese
+          maverick I Made Subandi, in which toy gamelan parts are assembled to
+          create a surround-sound experience.
+        
+      .view#pieces-brooke
+        %h2 Nick Brooke &amp; Mugiyono: "The Traps"
+        %img(src="/images/mugi.jpg" alt="Mugiyono Kasido")
+        :markdown
+          For his new work The Traps, composer Nick Brooke has constructed six
+          attaché cases filled with intricate miniature glass and metalwork,
+          inspired by the sound effects boxes once employed for live accompaniment
+          to silent films. Brooke’s work, commissioned through the Commissioning
+          Music/USA program, will be developed in collaboration with the
+          internationally celebrated, palace-trained dancer and choreographer
+          Mugiyono Kasido, last seen in the U.S. in a solo performance at the 2005
+          Lincoln Center Festival.
+      
+      .view#pieces-ziporyn
+        %h2 Evan Ziporyn
+        :markdown    
+          Following more than 30 years of immersion in and creative engagement
+          with Balinese gamelan, Evan Ziporyn’s new work Home Grown mixes the
+          dovetailing rhythms of gamelan with Ziporyn’s own quirky language,
+          re-orchestrated spontaneously on instruments gathered by the players at
+          the site of each performance. The music's form and organizational
+          principles will be derived from the structure of traditional gamelan
+          music, and recontextualized by the newly found sounds. It is a piece
+          that has a distinctive identity but is "localized" anew with each
+          performance.
+
+      .view#pieces-subandi
+        %h2 Indonesian Artists
+        :markdown
+          tbd...
 
   .island#gamelan
-    .nav
-      %ul.nav-links
-        %li.nav-link.active
-          %a(href="#gamelan/history") History
-        %li.nav-link
-          %a(href="#gamelan/samples") Listen
-    %h2 History of Gamelan
-    :markdown
-      &ldquo;Gamelan&rdquo; is a catchall term for the orchestras of Java and
-      Bali, most of which share gongs and slab-key metallophones, along with
-      flutes, strings, and often singers. Far from a static instrumentarium, a
-      gamelan can vary from a marching ensemble to a chamber group, and
-      composers often augment or rebuild the gamelan.
+    .nav= build_island_menu("Gamelan")
+    .content
+      .view.active#gamelan-history
+        %h2 History of Gamelan
+        :markdown
+          &ldquo;Gamelan&rdquo; is a catchall term for the orchestras of Java and
+          Bali, most of which share gongs and slab-key metallophones, along with
+          flutes, strings, and often singers. Far from a static instrumentarium, a
+          gamelan can vary from a marching ensemble to a chamber group, and
+          composers often augment or rebuild the gamelan.
 
-      Since at least the Paris Exposition of 1889, the gamelan orchestra has
-      been a subject of fascination and source of innovation for Western
-      composers. Yet new music for gamelan is rarely heard outside Java and
-      Bali, in part because the gamelan&rsquo;s gongs and slab-key instruments
-      weigh in excess of two tons. As Javanese gamelan seems to slowly die out,
-      smaller portable amalgams called &ldquo;campur sari&rdquo; (or
-      &ldquo;mixed essence&rdquo;) are emerging. In &ldquo;Pocket
-      Gamelan,&rdquo; Talujon reinvents the gamelan in a visually striking,
-      ingeniously transportable manner, cobbled together from instruments
-      representing an archipelago of influences.
-
-  .island#pieces
-    .bg
-    .nav
-      %ul.nav-links
-        %li.nav-link.active
-          %a(href="#pieces/main") The Program
-        %li.nav-link
-          %a(href="#pieces/brooke") Brooke / Mugiyono
-        %li.nav-link
-          %a(href="#pieces/ziporyn") Ziporyn
-        %li.nav-link
-          %a(href="#pieces/i1") Indonesian
-    .view.active#home
-      %h2 The Program
-      :markdown
-        This multimedia event will feature a new work by groundbreaking
-        composer and founding Bang on a Can All-star Evan Ziporyn, and a
-        premiere by genre-busting composer Nick Brooke, choreographed and
-        danced by the renowned Javanese dancer Mugiyono Kasido. The show will
-        also feature work by Indonesian composer Dawa Alit with a film by
-        Indonesian filmamker x, and an installation piece by the Balinese
-        maverick I Made Subandi, in which toy gamelan parts are assembled to
-        create a surround-sound experience.
-        
-    .view#brooke
-      %h2 Nick Brooke &amp; Mugiyono: "The Traps"
-      %img(src="/images/mugi.jpg")
-      :markdown
-        For his new work The Traps, composer Nick Brooke has constructed six
-        attaché cases filled with intricate miniature glass and metalwork,
-        inspired by the sound effects boxes once employed for live accompaniment
-        to silent films. Brooke’s work, commissioned through the Commissioning
-        Music/USA program, will be developed in collaboration with the
-        internationally celebrated, palace-trained dancer and choreographer
-        Mugiyono Kasido, last seen in the U.S. in a solo performance at the 2005
-        Lincoln Center Festival.
-      
-    .view#ziporyn
-      %h2 Evan Ziporyn
-      :markdown    
-        Following more than 30 years of immersion in and creative engagement
-        with Balinese gamelan, Evan Ziporyn’s new work Home Grown mixes the
-        dovetailing rhythms of gamelan with Ziporyn’s own quirky language,
-        re-orchestrated spontaneously on instruments gathered by the players at
-        the site of each performance. The music's form and organizational
-        principles will be derived from the structure of traditional gamelan
-        music, and recontextualized by the newly found sounds. It is a piece
-        that has a distinctive identity but is "localized" anew with each
-        performance.
-
-    .view#javanese
-      %h2 Indonesian Artists
-      :markdown
-        tbd...
+          Since at least the Paris Exposition of 1889, the gamelan orchestra has
+          been a subject of fascination and source of innovation for Western
+          composers. Yet new music for gamelan is rarely heard outside Java and
+          Bali, in part because the gamelan&rsquo;s gongs and slab-key
+          instruments weigh in excess of two tons. As Javanese gamelan seems to
+          slowly die out, smaller portable amalgams called &ldquo;campur
+          sari&rdquo; (or &ldquo;mixed essence&rdquo;) are emerging. In
+          &ldquo;Pocket Gamelan,&rdquo; Talujon reinvents the gamelan in a
+          visually striking, ingeniously transportable manner, cobbled together
+          from instruments representing an archipelago of influences.
+      .view#gamelan-audio
+        %h2 Audio Samples

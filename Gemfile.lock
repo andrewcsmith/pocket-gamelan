@@ -76,6 +76,7 @@ GEM
       sprockets-helpers (~> 1.0.0)
       sprockets-sass (~> 1.0.0)
     multi_json (1.7.9)
+    psych (2.0.0)
     rack (1.5.2)
     rack-livereload (0.3.15)
       rack
@@ -131,5 +132,6 @@ DEPENDENCIES
   middleman-jasmine
   middleman-livereload (~> 3.1.0)
   middleman-sprockets
+  psych
   ruby18_source_location
   susy
