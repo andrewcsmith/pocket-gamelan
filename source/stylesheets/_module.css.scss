@@ -6,3 +6,30 @@
   text-align: center;
   p { text-align: center; }
 }
+
+a.sm2_link {
+  display: inline-block;
+  padding: 0.5em 0em;
+  @include fancy-font;
+  background-color: $link-color;
+  color: #fff;
+  weight: 400;
+  text-align: center;
+  width: 100%;
+//  width: 31em;
+//  @include at-breakpoint($tablet) {width: 20em;}
+//  @include at-breakpoint($mobile) {width: 15em;}
+  
+  /* safari 3.1+ fun (or, proprietary crap. TBD.) */
+  -webkit-transition-property: hover;
+  -webkit-transition: background-color 0.15s linear;
+  -moz-transition: background-color 0.15s linear 0s; /* firefox 4 */
+   -o-transition-property: background-color; /* opera 10.5 */
+   -o-transition-duration: 0.15s;
+   
+   &:hover {
+     /* default hover color, if you'd like.. */
+     background-color: #000;
+     color:#fff;
+   }
+}

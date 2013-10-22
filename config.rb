@@ -81,4 +81,11 @@ activate :deploy do |deploy|
   deploy.password = "ker0uac"
   deploy.path = "/talujon"
   deploy.build_before = true
+  
+  deploy.method = :ftp
+  deploy.host = "ftp.talujon.org"
+  deploy.user = "andrew@talujon.org"
+  deploy.password = "y-FGN%V}3]Hn"
+  deploy.path = "/"
+  deploy.build_before = true
 end

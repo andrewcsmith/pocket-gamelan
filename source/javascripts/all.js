@@ -195,9 +195,9 @@ $(function() {
     vclick: function(){$(this).hide();}
   });
   
-  audiojs.events.ready(function() {
-    var as = audiojs.createAll();
-  });
+  // audiojs.events.ready(function() {
+  //   var as = audiojs.createAll();
+  // });
 });
 
 $(document).ready(function(){
