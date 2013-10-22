@@ -1,6 +1,9 @@
 //= require "./vendor/jquery-1.10.2.js"
 //= require "./vendor/jquery.mobile.custom.js"
-//= require "./elements/functions.js.coffee"
+//= require "./vendor/jquery.mousewheel.js"
+//= require "./plugins/jquery.easing.1.3.js"
+//= require "./plugins/jquery.fitvids.js"
+//= require "./vendor/jquery.bxslider.js"
 
 (function() {
   var config = {
@@ -31,8 +34,14 @@ var moveToAnchor = function(e) {
     var hash = ("/" + $(this).attr("id"));
     var el = $(this);
   } else {
-    // Should be called by a link object\
-    var hash = this.href.match(/#.*$/)[0]
+    // Should be called by a link object
+    var hash = this.href.match(/(#.*)$/);
+    if(hash.length > 0) {
+      hash = hash[1];
+    } else {
+      console.log(hash);
+      return true;
+    }
     var island = hash.replace(/#\//, '#').replace(/\/.*$/, ''); // String of the island
     var view = hash.match(/\/([^\/]*$)/)[1];
     // hash.replace(/#/g, '').replace(/\//g, ' #').trim();
@@ -93,28 +102,63 @@ var moveArchipelago = function(pos) {
   });
 }
 
+var isMobile = function() {
+  return $(".island").css("width") == "304px";
+}
+
+var getCurrentPos = function() {
+  return $('.archipelago').position();
+}
+
 var mouseDownArchipelago = function(m) {
-  // console.log("Mouse down!");
-  var currentPos = $('.archipelago').position();
   $('.archipelago').bind('vmousemove', {
     // Data that goes into the object
     mX: m.pageX,
     mY: m.pageY,
-    pos: currentPos
+    pos: getCurrentPos()
   }, function(e) {
     var x = e.data.pos.left + e.pageX - e.data.mX;
     var y = e.data.pos.top + e.pageY - e.data.mY;
+    if(isMobile()) { x = e.data.pos.left; }
     moveArchipelago({
       left: x,
       top: y
     });
   });
-  
+  if(isMobile()) { return false; }
 }
 
 var mouseUpArchipelago = function(m) {
   // console.log("Mouse up!");
   $('.archipelago').unbind('vmousemove');
+  return false;
+}
+
+var hideNavMenus = function() {
+  $('.nav-link > .nav-links > .nav-link').hide();
+}
+
+var scrollArchipelago = function(event, delta, deltaX, deltaY) {
+  // console.log(delta, deltaX, deltaY);
+  $(event.target).addClass("scrolling");
+  var content = $('.content:has(.scrolling)').get(0);
+  if(content && content.clientHeight < content.scrollHeight) {
+    $(event.target).removeClass("scrolling");
+    // console.log('' + deltaX + ' ' + deltaY);
+    // console.log(content.scrollTop);
+    if(content.scrollTop > 0 && deltaY > 0) {
+      // allow scrolling to happen
+      return true; 
+    } else if(content.scrollTop + content.clientHeight < content.scrollHeight && deltaY < 0) {
+      return true;
+    }
+  }
+  var pos = getCurrentPos();
+  moveArchipelago({
+    left: deltaX + pos.left,
+    top: deltaY + pos.top
+  });
+  $(event.target).removeClass("scrolling");
   return false;
 }
 
@@ -125,7 +169,7 @@ $(function() {
   $.vmouse.resetTimerDuration = 200;
   
   // Add the click handlers to the links
-  $("a[rel='local']").click(moveToAnchor);
+  $("a").bind('vclick', moveToAnchor);
   // Add the click handlers to each div
   $(".island").bind('vclick', moveToAnchor);
   // Navigate to the hashed island
@@ -135,21 +179,27 @@ $(function() {
     vmouseup: mouseUpArchipelago,
     mouseenter: mouseUpArchipelago
   });
-  $('.island').scroll(mouseUpArchipelago);
-  $('.island').scroll(function() {
-    $(this).children('.bg').hide();
-    $(this).unbind('scroll');
-    $(this).scroll(mouseUpArchipelago);
+  $(window).bind({
+    vmouseup: mouseUpArchipelago,
+    vclick: hideNavMenus,
+    mousewheel: scrollArchipelago
   });
-  $(window).bind('vmouseup', mouseUpArchipelago);
   
   $('.nav-link').bind({
     mouseover: function(){$(this).children('.nav-links').show();},
     mouseout: function(){$(this).children('.nav-links').hide();},
-    click: function(){$(this).children('.nav-links').hide();}
+    vclick: function(){$(this).children('.nav-links').hide();}
   });
   $('.nav-link').children('.nav-links').bind({
     mouseout: function(){$(this).hide();},
     vclick: function(){$(this).hide();}
   });
+  
+  audiojs.events.ready(function() {
+    var as = audiojs.createAll();
+  });
+});
+
+$(document).ready(function(){
+  $('.bxslider').bxSlider();
 });

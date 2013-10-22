@@ -1,33 +1,29 @@
 Talujon:
   href: talujon
   sub:
-    Bio:
-      href: bio
+    About:
+      href: about
       class: active
     Photos:
       href: photos
-    Video:
-      href: video
 Pocket Gamelan:
   href: main
   class: active
 The Program:
   href: pieces
   sub:
-    Overview:
-      href: overview
+    About:
+      href: about
       class: active
-    "The Traps":
+    "Brooke / Mugiyono":
       href: brooke
-    Evan Ziporyn:
+    Ziporyn:
       href: ziporyn
-    I Made Subandi:
-      href: subandi
+    Alit:
+      href: alit
 Gamelan:
   href: gamelan
   sub:
-    History:
-      href: history
+    About:
+      href: about
       class: active
-    Audio:
-      href: audio

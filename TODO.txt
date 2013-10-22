@@ -1,21 +1,11 @@
-- Make the sub-menus function on mobile
-- Work on the background image
-- Add the audio player with a playlist (footer)
+Things that still need to be added:
 
-Page Hierarchy:
+- Add link with PDF of tech requirements under The Program
 
-Main island
-	description/intro/link to executive summary pdf
-Talujon Percussion
-	bio
-  photos
-  video
-The Pieces
-  main/overview
-  Brooke/Mugiyono (with sound/video)
-  Ziporyn (with sound)
-  Indonesian composer tbd
-Gamelan
-  definition
-  history / photos
-  sound samples
+Things that are still required from Talujon:
+
+- Cool photo of Dewa Alit, preferably a performance photo, but not one that makes him seem super traditional. Does he have a photo from some theatre piece, or event like that?
+
+Back-end:
+
+- Make the audio player cooler.

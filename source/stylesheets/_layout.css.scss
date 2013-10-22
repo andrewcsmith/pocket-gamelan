@@ -3,14 +3,10 @@
 .archipelago {
   position: fixed;
   top: 3em; left: 0;
-  height: 74em;
+  height: 1490px;
   width: 162em;
-  @include at-breakpoint($tablet) {
-    width: 118em;
-  }
-  @include at-breakpoint($mobile) {
-    width: 86em;
-  }
+  @include at-breakpoint($tablet) { width: 118em; }
+  @include at-breakpoint($mobile) { width: 86em; }
   background: url("/images/table.jpg") no-repeat;
   background-size: 162em auto;
 }
@@ -24,16 +20,18 @@
   > .nav-links {
     padding-left: 0;
     margin: 0;
-    @include at-breakpoint($mobile) { margin: 0.5em; }
+    // @include at-breakpoint($mobile) { margin: 0em; }
     > .nav-link {
       display: inline-block;
       position: relative;
       padding: 0.25em 0.5em;
-      margin: 0 1em;
+      margin: 0 0.5em;
+      @include at-breakpoint($mobile) { margin: 0; padding: 0 0.5em; }
       &.active { font-weight: 600; }
       > .nav-links {
         display: none;
         position: absolute;
+        z-index: 20;
         left: 0;
         top: 2em;
         margin: 0;
@@ -52,6 +50,7 @@
   
   .island & {
     position: absolute;
+    z-index: 5;
     top: 0; left: 0;
     background: none;
     padding: 0;
@@ -62,6 +61,10 @@
       > .nav-link {
         padding: 0.25em 1em;
         margin: 0 0.25em;
+        @include at-breakpoint($tablet) { 
+          padding: 0 0.25em;
+          margin: 0 0.25em;
+        }
         @include trans-white-background;
       }
     }
@@ -73,20 +76,32 @@
 .island {
   @include container($total-columns, $mobile);
   width: 35em;
-  img, iframe { width: 31em; }
+  $p-shrink: 0.8888888887878788;
+  img, iframe { width: 33em; }
+  p img, p iframe {
+    width: 29.333333em;
+  }
   @include at-breakpoint($tablet) {
     width: 24em;
-    img, iframe { width: 20em; }
+    img, iframe { width: 22em; }
+    p img, p iframe { width: 19.55555555333333em; }
   }
   @include at-breakpoint($mobile) {
-    width: 16em;
-    img, iframe { width: 12em; }
+    width: 24em;
+    img, iframe { width: 17em; }
+    p { @include adjust-font-size-to(16px, 1.1); }
+    p img, p iframe { width: 17em; }
   }
   
   .content {
     @include trans-white-background;
     padding: 0.25em 1em 0.25em;
-    margin: 2em 1em 1em;
+    margin: 2em 0 1em;
+    max-height: 60em;
+    overflow-y: auto;
+    @include at-breakpoint($mobile) {
+      margin: 1em 0 0;
+    }
   }
   
   .view {
@@ -97,11 +112,10 @@
   }
   
   position: absolute;
-  max-height: 40em;
   overflow-x: hidden;
   overflow-y: auto;
   margin: 0.5em auto;
-  padding: 1em;
+  padding: 1em 0;
 
   &#talujon { top: 24em; left: 2em; }
   &#main { top: 15em; left: 42em; }

@@ -28,5 +28,5 @@ h3 { @include adjust-font-size-to(28px, 2); }
 p { 
   @include fancy-font;
   @include justified; 
-  @include adjust-font-size-to(18px, 1.25);
+  @include adjust-font-size-to(18px, 1);
 }

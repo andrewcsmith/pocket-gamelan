@@ -1,6 +1,7 @@
 /*
  *= require "./vendor/jquery.mobile.custom.structure.css"
  *= require "./vendor/jquery.mobile.custom.theme.css"
+ *= require "./vendor/jquery.bxslider.css"
 */
 
 @charset "utf-8";
@@ -28,7 +29,7 @@
 
 @mixin trans-white-background {
   background-color: #fff; // fallback for old browsers
-  background-color: rgba(255, 255, 255, 0.75);
+  background-color: rgba(255, 255, 255, 0.9);
 }
 
 // Base layout settings
@@ -45,10 +46,14 @@ $base-line-height: 24px;
 
 // Base colors
 
-$link-color: #513312;
+$link-color: #8c754a;
 
 @import "base";
 @import "layout";
 @import "module";
 @import "state";
 @import "theme";
+
+.audiojs {
+  margin: 1em 0;
+}
