@@ -174,6 +174,7 @@ $(function() {
   $(".island").bind('vclick', moveToAnchor);
   // Navigate to the hashed island
   goToHashedIsland();
+  
   $('.archipelago').bind({
     vmousedown: mouseDownArchipelago,
     vmouseup: mouseUpArchipelago,
@@ -188,11 +189,11 @@ $(function() {
   $('.nav-link').bind({
     mouseover: function(){$(this).children('.nav-links').show();},
     mouseout: function(){$(this).children('.nav-links').hide();},
-    vclick: function(){$(this).children('.nav-links').hide();}
+    // vclick: function(){$(this).children('.nav-links').children('a').hide();}
   });
   $('.nav-link').children('.nav-links').bind({
     mouseout: function(){$(this).hide();},
-    vclick: function(){$(this).hide();}
+    // vclick: function(){$(this).hide();}
   });
   
   // audiojs.events.ready(function() {

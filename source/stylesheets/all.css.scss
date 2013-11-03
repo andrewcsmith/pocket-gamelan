@@ -14,7 +14,7 @@
 
 @mixin justified {
   text-align: justify;
-  @include hyphenation;
+  // @include hyphenation;
 }
 
 @mixin fancy-font {
