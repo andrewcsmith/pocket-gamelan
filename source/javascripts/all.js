@@ -195,12 +195,8 @@ $(function() {
     mouseout: function(){$(this).hide();},
     // vclick: function(){$(this).hide();}
   });
-  
-  // audiojs.events.ready(function() {
-  //   var as = audiojs.createAll();
-  // });
 });
 
-$(document).ready(function(){
-  $('.bxslider').bxSlider();
-});
+// $(document).ready(function(){
+//   $('.bxslider').bxSlider();
+// });

@@ -101,7 +101,7 @@
     overflow-y: auto;
     @include at-breakpoint($mobile) {
       margin: 1em 0 0;
-      max-height: none;
+      // max-height: none;
     }
   }
   
