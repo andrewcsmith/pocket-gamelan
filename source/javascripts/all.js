@@ -2,8 +2,6 @@
 //= require "./vendor/jquery.mobile.custom.js"
 //= require "./vendor/jquery.mousewheel.js"
 //= require "./plugins/jquery.easing.1.3.js"
-//= require "./plugins/jquery.fitvids.js"
-//= require "./vendor/jquery.bxslider.js"
 
 (function() {
   var config = {
@@ -81,6 +79,9 @@ var constrainMoveTo = function(el) {
   if (pos.top * -1.0 > el.position().top - 48) {
     pos.top = (el.position().top - 48) * -1.0;
   }
+  if (isMobile()) {
+    pos.top = pos.top - 30;
+  }
   return pos;
 }
 
@@ -111,6 +112,7 @@ var getCurrentPos = function() {
 }
 
 var mouseDownArchipelago = function(m) {
+  if(isMobile()) { return true; }
   $('.archipelago').bind('vmousemove', {
     // Data that goes into the object
     mX: m.pageX,
@@ -119,13 +121,13 @@ var mouseDownArchipelago = function(m) {
   }, function(e) {
     var x = e.data.pos.left + e.pageX - e.data.mX;
     var y = e.data.pos.top + e.pageY - e.data.mY;
-    if(isMobile()) { x = e.data.pos.left; }
+    // if(isMobile()) { x = e.data.pos.left; y = e.data.pos.top; }
     moveArchipelago({
       left: x,
       top: y
     });
   });
-  if(isMobile()) { return false; }
+  //if(isMobile()) { return false; }
 }
 
 var mouseUpArchipelago = function(m) {
@@ -135,7 +137,7 @@ var mouseUpArchipelago = function(m) {
 }
 
 var hideNavMenus = function() {
-  $('.nav-link > .nav-links > .nav-link').hide();
+  $('.nav-links > .nav-link').hide();
 }
 
 var scrollArchipelago = function(event, delta, deltaX, deltaY) {
@@ -156,7 +158,7 @@ var scrollArchipelago = function(event, delta, deltaX, deltaY) {
   var pos = getCurrentPos();
   moveArchipelago({
     left: deltaX + pos.left,
-    top: deltaY + pos.top
+    top: (deltaY) + pos.top
   });
   $(event.target).removeClass("scrolling");
   return false;
@@ -187,14 +189,18 @@ $(function() {
   });
   
   $('.nav-link').bind({
-    mouseover: function(){$(this).children('.nav-links').show();},
-    mouseout: function(){$(this).children('.nav-links').hide();},
+    vmouseover: function(){$(this).children('.nav-links').show(); return true;},
+    vmouseout: function(){$(this).children('.nav-links').hide();}
     // vclick: function(){$(this).children('.nav-links').children('a').hide();}
   });
   $('.nav-link').children('.nav-links').bind({
-    mouseout: function(){$(this).hide();},
+    vmouseout: function(){$(this).hide();}
     // vclick: function(){$(this).hide();}
   });
+  
+  if(isMobile()) {
+    $('.island').css('max-height', window.innerHeight - 70);
+  }
 });
 
 // $(document).ready(function(){
