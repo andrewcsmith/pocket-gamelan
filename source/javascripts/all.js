@@ -1,6 +1,5 @@
 //= require "./vendor/jquery-1.10.2.js"
 //= require "./vendor/jquery.mobile.custom.js"
-//= require "./vendor/jquery.mousewheel.js"
 //= require "./plugins/jquery.easing.1.3.js"
 
 (function() {
@@ -140,7 +139,9 @@ var hideNavMenus = function() {
   $('.nav-links > .nav-link').hide();
 }
 
-var scrollArchipelago = function(event, delta, deltaX, deltaY) {
+var scrollArchipelago = function(event) {
+  var deltaX = event.deltaX;
+  var deltaY = event.deltaY * -1.0;
   // console.log(delta, deltaX, deltaY);
   $(event.target).addClass("scrolling");
   var content = $('.content:has(.scrolling)').get(0);
@@ -150,7 +151,7 @@ var scrollArchipelago = function(event, delta, deltaX, deltaY) {
     // console.log(content.scrollTop);
     if(content.scrollTop > 0 && deltaY > 0) {
       // allow scrolling to happen
-      return true; 
+      return true;
     } else if(content.scrollTop + content.clientHeight < content.scrollHeight && deltaY < 0) {
       return true;
     }
@@ -158,10 +159,17 @@ var scrollArchipelago = function(event, delta, deltaX, deltaY) {
   var pos = getCurrentPos();
   moveArchipelago({
     left: deltaX + pos.left,
-    top: (deltaY) + pos.top
+    top: deltaY + pos.top
   });
   $(event.target).removeClass("scrolling");
   return false;
+}
+
+var constrainIslandHeight = function() {
+  var offset = -140;
+  if(isMobile()) { offset = -80 }
+  var h = $(window).height();
+  $(".content").css("max-height", h + offset);
 }
 
 // on-load function
@@ -173,19 +181,25 @@ $(function() {
   // Add the click handlers to the links
   $("a").bind('vclick', moveToAnchor);
   // Add the click handlers to each div
-  $(".island").bind('vclick', moveToAnchor);
+  // $(".island").bind('vclick', moveToAnchor);
   // Navigate to the hashed island
   goToHashedIsland();
   
   $('.archipelago').bind({
-    vmousedown: mouseDownArchipelago,
-    vmouseup: mouseUpArchipelago,
-    mouseenter: mouseUpArchipelago
+    // vmousedown: mouseDownArchipelago,
+    // vmouseup: mouseUpArchipelago,
+    // mouseenter: mouseUpArchipelago
   });
   $(window).bind({
     vmouseup: mouseUpArchipelago,
     vclick: hideNavMenus,
-    mousewheel: scrollArchipelago
+    // mousewheel: scrollArchipelago
+  });
+  
+  // Make the island content scrollable
+  constrainIslandHeight();
+  $(window).resize(function() {
+    constrainIslandHeight();
   });
   
   $('.nav-link').bind({
@@ -202,7 +216,3 @@ $(function() {
     $('.island').css('max-height', window.innerHeight - 70);
   }
 });
-
-// $(document).ready(function(){
-//   $('.bxslider').bxSlider();
-// });

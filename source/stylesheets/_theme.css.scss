@@ -16,10 +16,11 @@
       }
       > .nav-links {
         > .nav-link {
-          a { color: #fff; }
-          &:hover { 
-            @include trans-white-background;
-            a { color: $link-color; }
+          a { color: #fff; 
+            &:hover { 
+              @include trans-white-background;
+              color: $link-color;
+            }
           }
         }
       }
