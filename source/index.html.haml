@@ -27,7 +27,7 @@ title: Pocket Gamelan
           
           For more information, contact [andrew@talujon.org](mailto:andrew@talujon.org)
           
-          [Click to download a PDF](/pocket-gamelan.pdf)
+          [Click to download a PDF](pocket-gamelan.pdf)
 
   .island#talujon
     .nav= build_island_menu("Talujon")
@@ -63,16 +63,12 @@ title: Pocket Gamelan
           at Buffalo, Harvard University, and the University of Oregon.
           
       .view#talujon-photos
-        :markdown
-          ###Bang on a Can Marathon 2012<br />World Financial Center, NYC
-        
-          [High-res for press](/images/high_res/talujon.zip)
+        %h3 Bang on a Can Marathon 2012<br />World Financial Center, NYC
+        %p= link_to "High-res for press", "images/high_res/talujon.zip"
           
-          ![Talujon at the World Financial Center, Bang on a Can Marathon 2012](/images/talujon_all_low.jpg)
-          
-          ![Michael Lipsey of Talujon, Bang on a Can Marathon 2012](/images/talujon_1_low.jpg)
-          
-          ![Matthew Gold of Talujon, Bang on a Can Marathon 2012](/images/talujon_2_low.jpg)
+        = image_tag "talujon_all_low.jpg", :alt => "Talujon at the World Financial Center, Bang on a Can Marathon 2012"
+        = image_tag "talujon_1_low.jpg", :alt => "Michael Lipsey of Talujon, Bang on a Can Marathon 2012"
+        = image_tag "talujon_2_low.jpg", :alt => "Matthew Gold of Talujon, Bang on a Can Marathon 2012"
     
   .island#pieces
     .nav= build_island_menu("The Program")
@@ -101,25 +97,29 @@ title: Pocket Gamelan
       .view#pieces-brooke
         %h2 <a href="http://www.nbrooke.com/">Nick Brooke</a> &amp; <a href="http://www.mugidance.org/">Mugiyono Kasido</a><br /><em>The Traps</em>
         
-        %iframe(width="100%" height="120" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/118402547")
+        %iframe(src="//player.vimeo.com/video/101008368" width="500" height="281" frameborder="0")
         
-        %img(src="/images/table_sm.jpg" alt="Nick Brooke, table for The Traps")
         :markdown
-        
           Composer **Nick Brooke** and dancer and choregrapher **Mugiyono
           Kasido** collaborate on the new work *The Traps*, written for Talujon
-          Percussion through a Commissioning Music/USA grant. Their work is
-          inspired by the ADD of contemporary techology, and scenes cut from
-          one moment to the next in a semi-improvisatory mode. Brooke has
-          constructed six attaché cases filled with intricate miniature glass
-          and metalwork, inspired by the sound effects boxes once employed for
-          live accompaniment to silent films. Mugiyono, last seen in the U.S.
-          in 2005 for a solo show at the Lincoln Center Festival, dances with a
-          frenetic energy: fast, unpredictable movements, often dancing to the
-          point of exhaustion.
-          
-          ## Biography
-          
+          Percussion through a Commissioning Music/USA grant. 
+
+          Their work fits six miniature gamelans into traveling attach&eacute;s,
+          which Mugiyono Kasido joins with an intricate, contraptive
+          choreography.  Their work is inspired by the A.D.D. of contemporary
+          techology, and scenes cut from one moment to the next in a
+          semi-improvisatory mode. Brooke's six attaché cases are
+          filled with intricate miniature glass and metalwork, inspired by the
+          sound effects boxes once employed for live accompaniment to silent
+          films. Mugiyono, last seen in the U.S. in 2005 for a solo show at the
+          Lincoln Center Festival, dances with frenetic energy: fast,
+          unpredictable movements, often to the point of exhaustion.
+
+        = image_tag "table_sm.jpg", :alt => "Nick Brooke, table for The Traps"
+
+        :markdown
+          ## About the Artists
+
           **Nick Brooke** mixes musical sampling, lipsynching, and theater into
           a genre all its own. In his works, vocalists and actors are trained
           to mimic sampled collages of sound effects, pop songs, and musical
@@ -142,7 +142,7 @@ title: Pocket Gamelan
           dancers, and visual artists. He holds degrees in music composition
           and philosophy from Oberlin, and a Ph.D from Princeton. He teaches at
           Bennington College.
-          
+
           **Mugiyono Kasido** (Mugi) was born at Jogodayoh village, Klaten,
           Central Java, Indonesia in 1967. Mugiyono’s choreography ranges from
           wry social commentary, works inspired by classical Javanese dance,
@@ -153,28 +153,26 @@ title: Pocket Gamelan
           afraid to stop, time always ticks by and life can’t be guessed”). In
           2005, Mugiyono was invited to performhis solo work The Rumors at the
           Walker Arts Center and the Lincoln Center Festival.
-          
+
           Working from material developed in high-energy improvisations this
           January, Nick and Mugiyono will create a work that explores a
           frenetic addiction to change, partly inspired by the ADD of
           contemporary technologies, and meditating on the culture of the “cut”.
-          
+
           His works have been performed in Asia, Europe, Australia, USA and
           Africa, and his collaborative projects have included SOME SHINE
           (Germany, England, Israel, and Indonesia), OR LOCAL (Indonesia,
           England, the Netherlands, and Germany) and MASK DANCE SYMBIOSA
           PROJECT (Indonesia and Thailand).
-          
-          
-          
-        %img(src="/images/mugi.jpg" alt="Mugiyono Kasido")
-      
+
+        = image_tag "mugi.jpg", :alt => "Mugiyono Kasido"
+
       .view#pieces-kotche
         %h2 <a href="http://glennkotche.com">Glenn Kotche</a><br /><em>Traveling Turtle</em>
         
         %iframe(width="100%" height="120" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/135200859%3Fsecret_token%3Ds-QaWeG&amp;color=ff5500&amp;auto_play=false&amp;hide_related=false&amp;show_artwork=true")
-          
-        %img(src="/images/kotche.jpg" alt="Glenn Kotche")
+        
+        = image_tag "kotche.jpg", :alt => "Glenn Kotche"
         
         :markdown
         
@@ -226,7 +224,7 @@ title: Pocket Gamelan
         
         %iframe(width="100%" height="120" scrolling="no" frameborder="no" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/118402545")
           
-        %img(src="/images/alit.jpg" alt="Dewa Alit")
+        = image_tag "alit.jpg", :alt => "Dewa Alit"
         
         :markdown
           Balinese composer **Dewa Alit** is composing a new work for Talujon

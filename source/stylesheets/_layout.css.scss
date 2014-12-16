@@ -7,7 +7,7 @@
   width: 162em;
   @include at-breakpoint($tablet) { width: 118em; }
   @include at-breakpoint($mobile) { width: 86em; }
-  background: url("/images/table.jpg") no-repeat;
+  background: url("../images/table.jpg") no-repeat;
   background-size: 162em auto;
 }
 

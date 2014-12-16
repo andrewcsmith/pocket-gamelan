@@ -2,7 +2,7 @@ require 'psych'
 
 module NavHelper
   def build_nav_menu
-    @@nav = Psych.load(File.read('source/nav.yaml'))
+    @@nav = data.nav
     nav_list @@nav, '#/', :id_suffix => "main-menu"
   end
   

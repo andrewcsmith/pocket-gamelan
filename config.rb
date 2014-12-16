@@ -56,6 +56,11 @@ set :js_dir, 'javascripts'
 
 set :images_dir, 'images'
 
+configure :development do
+  activate :relative_assets
+  # set :relative_links, true
+end
+
 # Build-specific configuration
 configure :build do
   # For example, change the Compass output style for deployment
@@ -74,18 +79,23 @@ configure :build do
   # set :http_path, "/Content/images/"
 end
 
-activate :deploy do |deploy|
-  # deploy.method = :ftp
-  # deploy.host = "ftp.andrewchristophersmith.com"
-  # deploy.user = "u53383158"
-  # deploy.password = "ker0uac"
-  # deploy.path = "/talujon"
-  # deploy.build_before = true
-  
-  deploy.method = :ftp
-  deploy.host = "ftp.talujon.org"
-  deploy.user = "andrew@talujon.org"
-  deploy.password = "y-FGN%V}3]Hn"
-  deploy.path = "/"
-  deploy.build_before = false
+case ENV['TARGET'].to_s.downcase
+when 'acs'
+  activate :deploy do |deploy|
+    deploy.method = :ftp
+    deploy.host = "ftp.andrewchristophersmith.com"
+    deploy.user = "u53383158"
+    deploy.password = "ker0uac"
+    deploy.path = "/talujon"
+    deploy.build_before = true    
+  end
+when 'talujon'
+  activate :deploy do |deploy|
+    deploy.method = :ftp
+    deploy.host = "ftp.talujon.org"
+    deploy.user = "andrew@talujon.org"
+    deploy.password = "y-FGN%V}3]Hn"
+    deploy.path = "/"
+    deploy.build_before = false
+  end
 end
